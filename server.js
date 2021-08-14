@@ -82,6 +82,6 @@ app.post("/api", (req, res) => {
     });
 });
 
-httpsServer.listen(port);
+app.listen(port);
 
 console.log(`Server started on port ${port}!`);
