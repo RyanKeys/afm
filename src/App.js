@@ -24,7 +24,7 @@ function App() {
       // Default options are marked with *
       const response = await fetch(url, {
         method: "POST",
-        mode: "cors",
+        mode: "same-origin",
         cache: "no-cache",
         headers: {
           "Content-Type": "application/json",
