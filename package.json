@@ -20,7 +20,7 @@
   "scripts": {
     "start": "node app.js",
     "predeploy": "npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm install && npm run build",
     "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
