@@ -7,15 +7,15 @@ const path = require("path");
 const app = express();
 const port = 8080;
 
-const cert = fs.readFileSync("./firemap_global.crt");
-const ca = fs.readFileSync("./firemap_global.ca-bundle");
-const key = fs.readFileSync("./firemap_global.key");
+// const cert = fs.readFileSync("./firemap_global.crt");
+// const ca = fs.readFileSync("./firemap_global.ca-bundle");
+// const key = fs.readFileSync("./firemap_global.key");
 
-let options = {
-  cert: cert, // fs.readFileSync('./ssl/example.crt');
-  ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
-  key: key, // fs.readFileSync('./ssl/example.key');
-};
+// let options = {
+//   cert: cert, // fs.readFileSync('./ssl/example.crt');
+//   ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
+//   key: key, // fs.readFileSync('./ssl/example.key');
+// };
 
 // also okay: https.createServer({cert, ca, key}, (req, res) => { ...
 
