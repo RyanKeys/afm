@@ -64,6 +64,16 @@ app.post("/api", (req, res) => {
     });
 });
 
-app.listen(port);
-
-console.log(`Server started on port ${port}!`);
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
+    },
+    app
+  )
+  .listen(port, function () {
+    console.log(
+      "Example app listening on port 8080! Go to https://localhost:8080/"
+    );
+  });
