@@ -11,7 +11,7 @@ const port = 8080;
 var options = {
   key: fs.readFileSync("./firemap_global.key"),
   cert: fs.readFileSync("./firemap_global.crt"),
-  ca: fs.readFileSync("./firemap_global.ca-bundle"),
+  ca: fs.readFileSync("./firemap_global.ca-bundle.crt"),
 };
 const app = express();
 // // TURN OFF IN PRODUCTION
