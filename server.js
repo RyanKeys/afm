@@ -15,8 +15,6 @@ const httpsOptions = {
 const cors = require("cors");
 
 const app = express();
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer(httpsOptions, app);
 
 app.use((req, res, next) => {
   if (req.protocol === "http") {
@@ -80,5 +78,4 @@ app.post("/api", (req, res) => {
     });
 });
 
-httpServer.listen(80);
-httpsServer.listen(443);
+app.listen(443);
