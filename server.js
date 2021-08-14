@@ -18,7 +18,6 @@ let options = {
 };
 
 // also okay: https.createServer({cert, ca, key}, (req, res) => { ...
-const httpsServer = https.createServer(options, app);
 
 app.use("/static", express.static("public"));
 app.use(express.json());
