@@ -18,7 +18,7 @@ function App() {
   const [fires, setFires] = useState();
 
   useEffect(() => {
-    const href = window.location.href + "api";
+    const href = "http://firemap.global/api";
     console.log(test);
     async function postData(url = href, data = {}) {
       // Default options are marked with *
