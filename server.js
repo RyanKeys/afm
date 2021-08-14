@@ -31,7 +31,7 @@ app.use(
 app.use("/static", express.static("public"));
 app.use(express.json());
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.static(path.join(__dirname, "build")));
 
 let callTime = 25;
 
