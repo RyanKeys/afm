@@ -8,7 +8,11 @@ const app = express();
 const port = 8080;
 
 // TURN OFF IN PRODUCTION
-const allowedOrigins = ["http://localhost:3000", "http://localhost:8080"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://obscure-oasis-36246.herokuapp.com/",
+];
 const cors = require("cors");
 app.use(
   cors({
