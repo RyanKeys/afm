@@ -17,8 +17,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "predeploy": "npm run build",
+    "react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
