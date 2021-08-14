@@ -6,12 +6,6 @@ const path = require("path");
 
 const port = 8080;
 
-const hostName = "firemap.global" || null;
-const httpsOptions = {
-  cert: fs.readFileSync("./firemap.global.crt"),
-  ca: fs.readFileSync("./firemap.global.ca-bundle"),
-  key: fs.readFileSync("./firemap.global.key"),
-};
 const cors = require("cors");
 
 const app = express();
