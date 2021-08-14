@@ -21,7 +21,7 @@ let options = {
 const httpsServer = https.createServer(options, app);
 
 // TURN OFF IN PRODUCTION
-const allowedOrigins = ["https://firemap.global/api"];
+const allowedOrigins = ["*"];
 const cors = require("cors");
 app.use(
   cors({
