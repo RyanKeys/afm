@@ -7,6 +7,27 @@ const path = require("path");
 const app = express();
 const port = 8080;
 
+const cert = fs.readFileSync("./firemap_global.crt");
+const ca = fs.readFileSync("./firemap_global.ca-bundle");
+const key = fs.readFileSync("./firemap_global.key");
+
+let options = {
+  cert: cert, // fs.readFileSync('./ssl/example.crt');
+  ca: ca, // fs.readFileSync('./ssl/example.ca-bundle');
+  key: key, // fs.readFileSync('./ssl/example.key');
+};
+
+// also okay: https.createServer({cert, ca, key}, (req, res) => { ...
+const httpsServer = https.createServer(options, app);
+const http = require("http");
+const hostname = "exampledomain.com";
+const httpServer = http.createServer((req, res) => {
+  res.statusCode = 301;
+  res.setHeader("Location", `https://${hostname}${req.url}`);
+  res.end(); // make sure to call send() or end() to send the response
+});
+httpServer.listen(80);
+
 // TURN OFF IN PRODUCTION
 const allowedOrigins = [
   "http://localhost:3000",
@@ -68,6 +89,6 @@ app.post("/api", (req, res) => {
     });
 });
 
-app.listen(port);
+httpsServer.listen(port, "firemap.global");
 
 console.log(`Server started on port ${port}!`);
