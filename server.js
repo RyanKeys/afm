@@ -5,10 +5,8 @@ const CSVToJSON = require("csvtojson");
 const path = require("path");
 
 const app = express();
-
-const cert = fs.readFileSync("./firemap.global.csr") || null;
-const ca = fs.readFileSync("./firemap.global.csr") || null;
-const key = fs.readFileSync("./firemap.global.key") || null;
+const port = 8080;
+const cors = require("cors");
 
 // // TURN OFF IN PRODUCTION
 // const allowedOrigins = ["http://localhost:3000", "http://localhost:8080"];
@@ -66,11 +64,17 @@ app.post("/api", (req, res) => {
     });
 });
 
-const httpsOptions = {
-  cert: fs.readFileSync("./firemap.global.csr"),
-  ca: fs.readFileSync("./firemap.global.csr"),
-  key: fs.readFileSync("./firemap.global.key"),
-};
-const httpsServer = https.createServer(httpsOptions, app);
-
-httpsServer.listen(443, "firemap.global");
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert"),
+    },
+    app
+  )
+  .listen(port, function () {
+    console.log(
+      "Example app listening on port 3000! Go to https://localhost:3000/"
+    );
+  });
+console.log(`Server started on port ${port}!`);
