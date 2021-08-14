@@ -6,6 +6,7 @@ const path = require("path");
 
 const app = express();
 const port = 8080;
+const cors = require("cors");
 
 // TURN OFF IN PRODUCTION
 const allowedOrigins = [
@@ -13,7 +14,6 @@ const allowedOrigins = [
   "http://localhost:8080",
   "https://obscure-oasis-36246.herokuapp.com/",
 ];
-const cors = require("cors");
 app.use(
   cors({
     origin: function (origin, callback) {
