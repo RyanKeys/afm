@@ -1,35 +1,32 @@
 const express = require("express");
 const https = require("https");
-const http = require("http");
-
 const fs = require("fs");
 const CSVToJSON = require("csvtojson");
 const path = require("path");
 
+const app = express();
 const port = 8080;
 
-var options = {
-  key: fs.readFileSync("./firemap_global.key"),
-  cert: fs.readFileSync("./firemap_global.crt"),
-  ca: fs.readFileSync("./firemap_global.ca-bundle.crt"),
-};
-const app = express();
-// // TURN OFF IN PRODUCTION
-// const cors = require("cors");
-// const allowedOrigins = ["http://localhost:3000", "http://localhost:8080"];
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin) return callback(null, true);
-//       if (allowedOrigins.indexOf(origin) === -1) {
-//         const msg =
-//           "The CORS policy for this site does not allow access from the specified Origin.";
-//         return callback(new Error(msg), false);
-//       }
-//       return callback(null, true);
-//     },
-//   })
-// );
+// TURN OFF IN PRODUCTION
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:8080",
+  "https://obscure-oasis-36246.herokuapp.com/",
+];
+const cors = require("cors");
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 app.use("/static", express.static("public"));
 app.use(express.json());
@@ -71,5 +68,6 @@ app.post("/api", (req, res) => {
     });
 });
 
-http.createServer(app).listen(80);
-https.createServer(options, app).listen(443);
+app.listen(port);
+
+console.log(`Server started on port ${port}!`);
