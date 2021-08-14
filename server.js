@@ -80,5 +80,5 @@ app.post("/api", (req, res) => {
     });
 });
 
-httpServer.listen(80, hostName);
-httpsServer.listen(443, hostName);
+httpServer.listen(80);
+httpsServer.listen(443);
