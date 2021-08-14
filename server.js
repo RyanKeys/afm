@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/build", "index.html"));
 });
 
-app.get("/api", (req, res) => {
+app.post("/api", (req, res) => {
   // Re-caches .csv hourly.
   const currTime = new Date().getHours();
   if (currTime !== callTime) {

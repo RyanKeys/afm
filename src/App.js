@@ -23,7 +23,7 @@ function App() {
     async function postData(url = `${window.location.href}api`, data = {}) {
       // Default options are marked with *
       const response = await fetch(url, {
-        method: "GET",
+        method: "POST",
         mode: "cors",
         cache: "no-cache",
         headers: {
