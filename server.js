@@ -64,16 +64,8 @@ app.post("/api", (req, res) => {
     });
 });
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert"),
-    },
-    app
-  )
-  .listen(port, function () {
-    console.log(
-      "Example app listening on port 8080! Go to https://localhost:8080/"
-    );
-  });
+app.listen(port, function () {
+  console.log(
+    "Example app listening on port 8080! Go to https://localhost:8080/"
+  );
+});
