@@ -8,9 +8,9 @@ const path = require("path");
 
 const hostName = "firemap.global" || null;
 const httpsOptions = {
-  cert: fs.readFileSync("./firemap.global.crt"),
-  ca: fs.readFileSync("./firemap.global.ca-bundle"),
-  key: fs.readFileSync("./firemap.global.key"),
+  cert: fs.readFileSync("./firemap_global.crt"),
+  ca: fs.readFileSync("./firemap_global.ca-bundle"),
+  key: fs.readFileSync("./firemap_global.key"),
 };
 const cors = require("cors");
 
