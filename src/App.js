@@ -22,7 +22,7 @@ function App() {
     console.log(test);
     async function postData(url = href, data = {}) {
       // Default options are marked with *
-      const response = await fetch(url, {
+      const response = fetch(url, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
