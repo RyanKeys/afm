@@ -19,7 +19,6 @@ let options = {
 
 // also okay: https.createServer({cert, ca, key}, (req, res) => { ...
 const httpsServer = https.createServer(options, app);
-const hostname = "exampledomain.com";
 
 // TURN OFF IN PRODUCTION
 const allowedOrigins = ["firemap.global"];
