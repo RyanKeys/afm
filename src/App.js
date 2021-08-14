@@ -18,7 +18,7 @@ function App() {
   const [fires, setFires] = useState();
 
   useEffect(() => {
-    const href = "https://firemap.global/api";
+    const href = "104.197.155.72:8080/api";
     console.log(test);
     async function postData(url = href, data = {}) {
       // Default options are marked with *
