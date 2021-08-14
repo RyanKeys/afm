@@ -19,14 +19,7 @@ let options = {
 
 // also okay: https.createServer({cert, ca, key}, (req, res) => { ...
 const httpsServer = https.createServer(options, app);
-const http = require("http");
 const hostname = "exampledomain.com";
-const httpServer = http.createServer((req, res) => {
-  res.statusCode = 301;
-  res.setHeader("Location", `https://${hostname}${req.url}`);
-  res.end(); // make sure to call send() or end() to send the response
-});
-httpServer.listen(80);
 
 // TURN OFF IN PRODUCTION
 const allowedOrigins = [
@@ -89,6 +82,6 @@ app.post("/api", (req, res) => {
     });
 });
 
-httpsServer.listen(port, "firemap.global");
+httpsServer.listen(443, "firemap.global");
 
 console.log(`Server started on port ${port}!`);
