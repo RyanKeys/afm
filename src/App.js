@@ -18,9 +18,9 @@ function App() {
   const [fires, setFires] = useState();
 
   useEffect(() => {
-    const test = window.location.href + "api";
+    const href = window.location.href + "api";
     console.log(test);
-    async function postData(url = `${window.location.href}api`, data = {}) {
+    async function postData(url = href, data = {}) {
       // Default options are marked with *
       const response = await fetch(url, {
         method: "POST",
