@@ -19,7 +19,6 @@ function App() {
 
   useEffect(() => {
     const href = "https://firemap.global/api";
-    console.log(test);
     async function postData(url = href, data = {}) {
       // Default options are marked with *
       const response = await fetch(url, {
