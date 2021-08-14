@@ -46,11 +46,11 @@ function getFireCSV() {
   );
 }
 
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/build", "index.html"));
 });
 
-app.post("/api", (req, res) => {
+app.get("/api", (req, res) => {
   // Re-caches .csv hourly.
   const currTime = new Date().getHours();
   if (currTime !== callTime) {
