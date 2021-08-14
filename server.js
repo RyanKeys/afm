@@ -5,7 +5,7 @@ const CSVToJSON = require("csvtojson");
 const path = require("path");
 
 const app = express();
-const port = 8080;
+const port = 443;
 
 const cert = fs.readFileSync("./firemap_global.crt");
 const ca = fs.readFileSync("./firemap_global.ca-bundle");
