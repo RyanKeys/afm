@@ -68,8 +68,8 @@ app.post("/api", (req, res) => {
 https
   .createServer(
     {
-      key: fs.readFileSync("firemap_global.key"),
-      cert: fs.readFileSync("firemap_global.crt"),
+      key: fs.readFileSync("./firemap_global.key"),
+      cert: fs.readFileSync("./firemap_global.crt"),
     },
     app
   )
