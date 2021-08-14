@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     console.log(window.location.href);
-    async function postData(url = `${window.location.href}/api`, data = {}) {
+    async function postData(url = `${window.location.href}api`, data = {}) {
       // Default options are marked with *
       const response = await fetch(url, {
         method: "POST",
