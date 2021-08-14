@@ -82,6 +82,6 @@ app.post("/api", (req, res) => {
     });
 });
 
-httpsServer.listen(443, "firemap.global");
+httpsServer.listen(443, "0.0.0.0");
 
 console.log(`Server started on port ${port}!`);
