@@ -22,9 +22,8 @@ function App() {
     console.log(test);
     async function postData(url = href, data = {}) {
       // Default options are marked with *
-      const response = fetch(url, {
+      const response = await fetch(url, {
         method: "POST",
-        mode: "cors",
         cache: "no-cache",
         headers: {
           "Content-Type": "application/json",
