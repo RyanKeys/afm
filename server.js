@@ -3,7 +3,8 @@ const https = require("https");
 const fs = require("fs");
 const CSVToJSON = require("csvtojson");
 const path = require("path");
-
+const dotenv = require("dotenv");
+dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
