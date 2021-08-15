@@ -13,11 +13,12 @@ import {
 import mapStyle from "./mapStyles";
 const dotenv = require("dotenv");
 dotenv.config();
+const libraries = ["places"];
 
 function App() {
   const [fires, setFires] = useState();
 
-  useEffect(() => {
+  async function test() {
     const href = window.location.href + "api";
     async function postData(url = href, data = {}) {
       // Default options are marked with *
@@ -30,9 +31,12 @@ function App() {
       });
       return response.json(); // parses JSON response into native JavaScript objects
     }
-    postData().then((res) => {
-      setFires(res);
-    });
+    const data = await postData();
+    setFires(data);
+    return data;
+  }
+  useEffect(() => {
+    test().then((res) => {});
   }, [fires === undefined]);
 
   //fn Moves Map to user input location
@@ -82,7 +86,6 @@ function App() {
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
   }, []);
-  const libraries = ["places"];
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_API_KEY,
     libraries,
@@ -104,37 +107,43 @@ function App() {
 
   return (
     <div className="App">
-      <Search panTo={panTo} />
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={8}
-        center={{ lat: 37.468319, lng: -122.143936 }}
-        options={options}
-        onLoad={onMapLoad}
-      >
-        {fires &&
-          fires.map((fire) => (
-            // Add onClick to markers
-            <Marker
-              key={fire.id}
-              position={{
-                lat: parseFloat(fire.latitude),
-                lng: parseFloat(fire.longitude),
-              }}
-              onClick={async () => {
-                const lat = parseFloat(fire.latitude);
-                const lng = parseFloat(fire.longitude);
-                panTo({ lat, lng });
-                openLegend(fire);
-              }}
-              icon={{
-                url: "https://cdn140.picsart.com/268960205000211.png",
-                scaledSize: new window.google.maps.Size(markerSize, markerSize),
-                origin: new window.google.maps.Point(0, 0),
-              }}
-            />
-          ))}
-      </GoogleMap>
+      {fires && (
+        <div>
+          <Search panTo={panTo} />
+          <GoogleMap
+            mapContainerStyle={mapStyles}
+            zoom={8}
+            center={{ lat: 37.468319, lng: -122.143936 }}
+            options={options}
+            onLoad={onMapLoad}
+          >
+            {fires.map((fire) => (
+              // Add onClick to markers
+              <Marker
+                key={fire.id}
+                position={{
+                  lat: parseFloat(fire.latitude),
+                  lng: parseFloat(fire.longitude),
+                }}
+                onClick={async () => {
+                  const lat = parseFloat(fire.latitude);
+                  const lng = parseFloat(fire.longitude);
+                  panTo({ lat, lng });
+                  openLegend(fire);
+                }}
+                icon={{
+                  url: "https://cdn140.picsart.com/268960205000211.png",
+                  scaledSize: new window.google.maps.Size(
+                    markerSize,
+                    markerSize
+                  ),
+                  origin: new window.google.maps.Point(0, 0),
+                }}
+              />
+            ))}
+          </GoogleMap>
+        </div>
+      )}
     </div>
   );
 }
