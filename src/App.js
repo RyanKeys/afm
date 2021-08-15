@@ -33,7 +33,7 @@ function App() {
     postData().then((res) => {
       setFires(res);
     });
-  }, [fires]);
+  }, [fires === undefined]);
 
   //fn Moves Map to user input location
   const panTo = React.useCallback(({ lat, lng }) => {
